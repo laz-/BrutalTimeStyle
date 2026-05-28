@@ -397,8 +397,25 @@ get_glyph(enum font font, char c, uint8_t **pixels)
 	*pixels = gbitmap_get_data(glyphs);
 
 #ifndef PBL_PLATFORM_APLITE
-	if (font == BIG)
+	if (font == BIG) {
 		glyph = scale_glyph(glyph, pixels);
+
+		if (c == '7' && settings.sevenCrossbar) {
+			// Crossbar delta (glyph-relative col, row): 3-2-1 taper
+			static const int8_t crossbar[][2] = {
+				{2,5},{3,5},{4,5},
+				{3,6},{4,6},
+				{4,7}
+			};
+			for (unsigned ci = 0; ci < ARRAY_LENGTH(crossbar); ci++) {
+				int bx0 = crossbar[ci][0] * s_scale_x;
+				int by0 = crossbar[ci][1] * s_scale_y;
+				for (int dy = 0; dy < s_scale_y; dy++)
+				for (int dx = 0; dx < s_scale_x; dx++)
+					SET_BIT(s_scale_buf, BUFW, bx0+dx, by0+dy);
+			}
+		}
+	}
 #endif
 
 	return glyph;

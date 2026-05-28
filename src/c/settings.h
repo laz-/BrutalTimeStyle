@@ -2,7 +2,7 @@
 #include <pebble.h>
 #include "sidebar_widgets.h"
 
-#define CURRENT_SETTINGS_VERSION 7
+#define CURRENT_SETTINGS_VERSION 8
 
 // persistent storage keys
 #define SETTINGS_PERSIST_KEY 100
@@ -59,6 +59,7 @@ typedef struct {
   bool healthUseDistance;
   bool healthUseRestfulSleep;
   char decimalSeparator;
+  bool sevenCrossbar;
 } Settings;
 
 // Dynamic settings (calculated at runtime based on currently-selected widgets)

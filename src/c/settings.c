@@ -75,8 +75,10 @@ void Settings_loadFromStorage() {
         settings.activateDisconnectIcon = s.activateDisconnectIcon;
         // shadow setting is new, default to 0
         settings.shadow = 0;
+        // sevenCrossbar is new, default to false
+        settings.sevenCrossbar = false;
 
-        // re-save in new v7 format
+        // re-save in new v8 format
         Settings_saveToStorage();
       } else {
         // v7 settings: load directly via single persist read

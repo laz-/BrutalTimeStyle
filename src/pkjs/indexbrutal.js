@@ -39,6 +39,12 @@ new Clay([
         "defaultValue": false
       },
       {
+        "type": "toggle",
+        "messageKey": "SettingSevenCrossbar",
+        "label": "Crossbar on 7",
+        "defaultValue": false
+      },
+      {
         "type": "select",
         "messageKey": "SettingClockFontId",
         "label": "Clock Font",

@@ -109,6 +109,7 @@ void inbox_received_callback(DictionaryIterator *iterator, void *context) {
 
   Tuple *activateDisconnectIcon_tuple = dict_find(iterator, MESSAGE_KEY_SettingDisconnectIcon);
   Tuple *shadow_tuple = dict_find(iterator, MESSAGE_KEY_SHADOW);
+  Tuple *sevenCrossbar_tuple = dict_find(iterator, MESSAGE_KEY_SettingSevenCrossbar);
 
 
   if(timeColor_tuple != NULL) {
@@ -211,6 +212,10 @@ void inbox_received_callback(DictionaryIterator *iterator, void *context) {
 
   if(shadow_tuple != NULL) {
     settings.shadow = (uint8_t)shadow_tuple->value->int32;
+  }
+
+  if(sevenCrossbar_tuple != NULL) {
+    settings.sevenCrossbar = (bool)sevenCrossbar_tuple->value->int8;
   }
 
   // save the new settings to persistent storage
